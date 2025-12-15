@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Availability Prediction</title>
+</head>
+<body>
+
+    <h2>Parking Availability Prediction</h2>
+
+    <form action="/predict" method="post">
+
+        <label>Hour (0–23):</label>
+        <input type="number" name="Hour" min="0" max="23" required>
+        <br><br>
+
+        <label>Day of Week (0=Monday, 6=Sunday):</label>
+        <input type="number" name="Day_of_Week" min="0" max="6" required>
+        <br><br>
+
+        <label>Is Weekend:</label>
+        <select name="Is_Weekend" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        <br><br>
+
+        <label>Weather:</label>
+        <input type="text" name="Weather" placeholder="Sunny, Rainy, Cloudy" required>
+        <br><br>
+
+        <label>Nearby Event:</label>
+        <select name="Nearby_Event" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        <br><br>
+
+        <label>Parking Capacity:</label>
+        <input type="number" name="Parking_Capacity" required>
+        <br><br>
+
+        <label>Occupied Spots:</label>
+        <input type="number" name="Occupied_Spots" required>
+        <br><br>
+
+        <button type="submit">Predict Available Spots</button>
+
+    </form>
+
+    {% if prediction_text %}
+        <h3>Prediction Result: {{ prediction_text }}</h3>
+    {% endif %}
+
+</body>
+</html>
